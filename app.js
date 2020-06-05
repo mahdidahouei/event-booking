@@ -5,12 +5,15 @@ const mongoose = require('mongoose');
 
 const graphQlSchema = require('./graphql/schema/index');
 const graphQlResolvers = require('./graphql/resolvers/index');
+const isAuth = require('./middleware/is_auth');
 
 const PORT = process.env.PORT || 3000;
 
 const app = express();
 
 app.use(bodyParser.json());
+
+app.use(isAuth);
 
 // ! sign makes the objects not nullable
 app.use('/graphql', graphQlHttp({
