@@ -32,11 +32,11 @@ module.exports = {
 
         if(!isEqual) throw new Error('Password is incorrect!');
 
-        let expirationHours = 1;
+        let expirationDays = 14;
 
 
         const token = jwt.sign({userId: user.id, email: user.email}, process.env.JWT_KEY, {
-            expiresIn: `${expirationHours}h`
+            expiresIn: `${expirationDays}d`
         });
 
         return {
