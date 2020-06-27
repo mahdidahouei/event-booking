@@ -44,6 +44,7 @@ const singleEvent = async eventId => {
         return {
             ...event._doc,
             _id: event.id,
+            date: event._doc.date.toISOString(),
             creator: user.bind(this, event._doc.creator),
         }
     }
